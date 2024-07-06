@@ -19,14 +19,13 @@
         .contador {
             font-size: 45px;
         }
-
     </style>
 </head>
 
 <body class="d-flex justify-content-center align-items-center">
-    
+
     <div class="d-flex flex-column align-items-center">
-        
+
         <div class="row text-center contador shadow-lg p-3 pt-4 mb-5 bg-white rounded mx-auto">
             <p>🎃</p>
             <p id="count" style="color: black;">0</p>
@@ -34,6 +33,13 @@
 
         <div>
             <img src="https://f.feridinha.com/2Xf1X.png" height="200px" onclick="Increment()">
+        </div>
+
+        <div class="row pt-4">
+            <button type="button" class="btn btn-primary" onclick="Reset()">
+                Resetar contador
+                <img src="assets/img/white-reset.png" alt="" height="20px">
+            </button>
         </div>
 
     </div>
@@ -45,7 +51,13 @@
             contador.textContent = newValue;
             console.log(contador, newValue);
         }
+
+        function Reset() {
+            var contador = document.getElementById('count');
+            contador.textContent = '0';
+        }
     </script>
 
 </body>
+
 </html>

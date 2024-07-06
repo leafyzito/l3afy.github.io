@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <title>Abóbora</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: rgb(191, 213, 255);
+        }
+
+        .contador {
+            font-size: 45px;
+        }
+
+    </style>
+</head>
+
+<body class="d-flex justify-content-center align-items-center">
+    
+    <div class="d-flex flex-column align-items-center">
+        
+        <div class="row text-center contador shadow-lg p-3 pt-4 mb-5 bg-white rounded mx-auto">
+            <p>🎃</p>
+            <p id="count" style="color: black;">0</p>
+        </div>
+
+        <div>
+            <img src="https://f.feridinha.com/2Xf1X.png" height="200px" onclick="Increment()">
+        </div>
+
+    </div>
+
+    <script>
+        function Increment() {
+            var contador = document.getElementById('count');
+            var newValue = parseInt(contador.textContent) + 1;
+            contador.textContent = newValue;
+            console.log(contador, newValue);
+        }
+    </script>
+
+</body>
+</html>

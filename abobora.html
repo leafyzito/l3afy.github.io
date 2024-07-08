@@ -42,6 +42,11 @@
             position: absolute;
             transition: none;
         }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
     </style>
 </head>
 
@@ -83,9 +88,26 @@
         function Reset() {
             var contador = document.getElementById('count');
             contador.textContent = '0';
+            var fallingPumpkins = document.querySelectorAll('.falling-pumpkin');
+            fallingPumpkins.forEach(function (pumpkin) {
+
+
+                pumpkin.addEventListener('transitionend', function () {
+                    pumpkin.classList.add('fade-out');
+                    pumpkin.addEventListener('transitionend', function () {
+                        pumpkin.remove();
+                    });
+                });
+            });
+
             var fallenPumpkins = document.querySelectorAll('.fallen-pumpkin');
-            fallenPumpkins.forEach(function(pumpkin) {
-                pumpkin.remove();
+            fallenPumpkins.forEach(function (pumpkin) {
+                pumpkin.classList.add('fade-out');
+                pumpkin.addEventListener('transitionend', function () {
+                    pumpkin.remove();
+                });
+
+
             });
         }
 
@@ -94,20 +116,20 @@
             pumpkin.src = 'https://f.feridinha.com/2Xf1X.png';
             pumpkin.height = 50;
             pumpkin.className = 'falling-pumpkin';
-            
+
             // Set random horizontal position
             pumpkin.style.left = Math.random() * (window.innerWidth - pumpkin.height) + 'px';
-            
+
             document.getElementById('background-container').appendChild(pumpkin);
 
             // Trigger the fall animation
             var pxToStop = Math.random() * window.innerHeight;
-            setTimeout(function() {
+            setTimeout(function () {
                 pumpkin.style.top = pxToStop + 'px';
             }, 100);
 
             // After the fall, change class and update the position to stack
-            pumpkin.addEventListener('transitionend', function() {
+            pumpkin.addEventListener('transitionend', function () {
                 pumpkin.className = 'fallen-pumpkin';
                 pumpkin.style.top = pxToStop + 'px';
                 pumpkin.style.bottom = (window.innerHeight - pxToStop) + 'px';

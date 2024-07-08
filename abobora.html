@@ -70,7 +70,6 @@
     </div>
 
     <script>
-        var pumpkinCount = 0; // To keep track of the number of pumpkins
 
         function Increment() {
             var contador = document.getElementById('count');
@@ -84,10 +83,8 @@
         function Reset() {
             var contador = document.getElementById('count');
             contador.textContent = '0';
-            pumpkinCount = 0; // Reset the pumpkin count
-            // Remove all existing pumpkins
-            var pumpkins = document.querySelectorAll('.fallen-pumpkin');
-            pumpkins.forEach(function(pumpkin) {
+            var fallenPumpkins = document.querySelectorAll('.fallen-pumpkin');
+            fallenPumpkins.forEach(function(pumpkin) {
                 pumpkin.remove();
             });
         }
@@ -114,7 +111,6 @@
                 pumpkin.className = 'fallen-pumpkin';
                 pumpkin.style.top = pxToStop + 'px';
                 pumpkin.style.bottom = (window.innerHeight - pxToStop) + 'px';
-                pumpkinCount++;
             });
         }
     </script>
